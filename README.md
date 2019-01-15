@@ -21,13 +21,13 @@ as the server application.</li
 </ol>
 
 
-<h5>Limitations</h5>
+<!-- <h5>Limitations</h5>
 <ul>
 <li>As of now it only works if client and server are in same network which
 totally defeats the point of penetrating a network .</li>
-<!-- <li>If anyone knows how to make it such that it can work over different 
+ <li>If anyone knows how to make it such that it can work over different 
 networks , please help me improve it accordingly </li>  -->
 </ul>
 
-<h6>Contact</h6> 
+<h5>Contact</h5> 
  gibraan.jafar@viit.ac.in
