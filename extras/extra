@@ -1,0 +1,39 @@
+# Print MAC addresses
+
+# Method 2
+print ("MAC in formatted manner : ", end="")
+print(':'.join(['{:02x}'.format((uuid.getnode() >> ele) & 0xff)
+for ele in range(0,8*6,8)][::-1]))
+
+# Method 3
+print ("The MAC address in formatted and less complex way is : ", end="") 
+print (':'.join(re.findall('..', '%012x' % uuid.getnode())))
+
+
+
+# Get OS
+# Method 1
+import sys
+sys.platform
+# Method 2
+import platform
+platform.platform()
+# or
+platform.system()
+
+
+# Use Dictionaries 
+
+
+# Execute system calls
+# import subprocess
+# Can use call() , check_output() , Popen() .
+# With call() and check_output() can pass  
+# entire multi-word command as a string .
+# No need to pass it as a list .
+# check_output() returns stuff in binary , so do .decode('ascii') to get in 
+# usable format .
+
+
+It is of no use determining size of file and sending that many bytes.
+Rather lets try closing socket on client side when sending is over.
