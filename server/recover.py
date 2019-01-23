@@ -4,8 +4,8 @@
 # list files in victim directory  			<= Done
 # open Wordlist in append mode	  			<= Done
 # take second column of each file and write in Wordlist <= Done
-# arrange in ascending mode
-# remove duplicates
+# arrange in ascending mode				<= Done
+# remove duplicates					<= Done
 
 
 import re
