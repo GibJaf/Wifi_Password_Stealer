@@ -16,9 +16,9 @@ Python3.6
 <li>Start server application on your machine : <b>python server.py</b></li>
 <li>Social engineer the victim to download the client file and run using
 python3.6 : <b> python client.py </b> </li>
-<li>A file containing ssid and WPA2_PSk will be generated in same folder 
-as the server application.</li>
-<li> create a wordlist in victim folder by running : <b> python recover.py </b> </li>
+<li>A file of mac address of victim as name containing ssid and WPA2_PSk <br> 
+will be generated in victims folder </li>
+<li> Server will autoamatically create Wordlist by extracting unique PSK from all victim files </li>
 </ol>
 
 
