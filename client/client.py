@@ -10,7 +10,7 @@ COMMAND_LINUX = "sudo grep -r '^psk=' /etc/NetworkManager/system-connections/"
 RE_LINUX = '/etc/NetworkManager/system-connections/(.*)'
 MAC = ''
 OS = ''
-SERVER_IP = '192.168.0.100'
+SERVER_IP = '192.168.0.104'
 serversocket = ''
 
 

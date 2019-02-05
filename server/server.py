@@ -8,6 +8,7 @@ import socket
 import fcntl
 import struct
 import recover_fast
+import remove_duplicates
 
 
 FILE_NAME = ''
@@ -32,6 +33,7 @@ def main():
             recover_fast.main(mac)
             print()
     except KeyboardInterrupt:
+        remove_duplicates.main()
         print("\n\n SERVER STOPPED ...")
 
 def create_victims_folder():
@@ -121,4 +123,12 @@ if __name__ == "__main__":
 
 """ Bugs
 1) Interface 'enp1s0' ie: on ethernet
+
+    Improvements
+1) When initializing server print
+	no of victims so far
+	no of unique passwords in Wordlist
+2) When terminating server
+	no of victims so far
+	no of unique passwords in Wordlist
 """

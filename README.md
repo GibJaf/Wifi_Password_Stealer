@@ -19,6 +19,7 @@ python3.6 : <b> python client.py </b> </li>
 <li>A file of mac address of victim as name containing ssid and WPA2_PSk <br> 
 will be generated in victims folder </li>
 <li> Server will autoamatically create Wordlist by extracting unique PSK from all victim files </li>
+<li> To search for password for a certain SSID : <b>python search.py</b> </li>
 </ol>
 
 
