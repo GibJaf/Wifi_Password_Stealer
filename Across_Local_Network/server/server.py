@@ -4,7 +4,6 @@ import socket
 from subprocess import Popen, PIPE
 import subprocess
 import os
-import socket
 import fcntl
 import struct
 import recover_fast
@@ -54,6 +53,7 @@ def create_socket():
         serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         interface = "wlp2s0"  # 'enp1s0' causes issues
         ip = get_ip_address(interface)
+        print(type(ip))
         print("Current ip on " + interface + " => " + str(ip)+'\n')
         port = 10000
         server_address = (ip, port)
