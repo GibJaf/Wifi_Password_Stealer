@@ -96,7 +96,7 @@ def send_mail():
     EMAIL_ADDRESS = "" # insert email address from which email must be sent
     EMAIL_PASSWORD = "" # insert app password which given by gmail
 
-    contacts = [ ] # Add email addresses in this list
+    contacts = [] # Add email addresses in this list
 		   # example : [ "abc@xyz.com" , "def@ghi.com" ]
 
     msg = EmailMessage()
