@@ -22,14 +22,24 @@ will be generated in victims folder </li>
 <li> To search for password for a certain SSID : <b>python search.py</b> </li>
 </ol>
 
+<h5> Disadvantage of 4-way handshake cracking  </h5>
+<ol> 
+	<li> Cracking the 4-way handshake can be a very time-consuming process </li>
+	<li> It has a low success rate . </li>
+	<li> You need to have correct password in your wordlist </li>
+	<li> To speeden up the process requires expensive GPUs </li>
+</ol>
 
-<!-- <h5>Limitations</h5>
-<ul>
-<li>As of now it only works if client and server are in same network which
-totally defeats the point of penetrating a network .</li>
- <li>If anyone knows how to make it such that it can work over different 
-networks , please help me improve it accordingly </li>  -->
-</ul>
+<h5> Advantage of Wifi_Password_Stealer  </h5>
+<ol> 
+        <li> Works very fast .</li>
+        <li> Almost 100% success rate  </li>
+        <li> No need to know or guess the correct password </li>
+        <li> No need of expensive GPUs </li>
+</ol>
+
+
+
 
 <h5>Contact</h5> 
  gibraan.jafar@viit.ac.in
