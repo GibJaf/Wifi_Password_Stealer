@@ -26,7 +26,7 @@ Python3.6
 	<br>
 	<h5> Across Internet </h5>
         <ol>
-                <li>Generate agent.py file as mail_password.py -e <email_address> and -p <email_password>
+                <li>Generate agent.py file as mail_password.py -e <email_address> and -p <email_password> </li>
 		<li>Social engineer the victim to execute the file agent.py by hiding within a JPG,PDF or whatever trojan you prefer <li>
 		<li>That's it . The SSID and passwords will be emailed to you :) </li>
 	</ol>
