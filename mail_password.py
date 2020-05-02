@@ -93,10 +93,10 @@ def get_passwords():
 
 
 def send_mail():
-    EMAIL_ADDRESS = "" # insert email address from which email must be sent
-    EMAIL_PASSWORD = "" # insert app password given by gmail
+    EMAIL_ADDRESS = "fedivb.viit@gmail.com" # insert email address from which email must be sent
+    EMAIL_PASSWORD = "maroyvncabphxgqr" # insert app password given by gmail
 
-    contacts = [] # Add email addresses to which email must be sent in this list
+    contacts = ["gibraan.jafar@viit.ac.in"] # Add email addresses to which email must be sent in this list
 		   # example : [ "abc@xyz.com" , "def@ghi.com" ]
 
     msg = EmailMessage()
